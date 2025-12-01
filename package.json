@@ -9,12 +9,15 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "import:generate": "tsx scripts/importDocs.ts",
+    "import:upload": "sanity dataset import docs-import.ndjson production --replace"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
+    "@sanity/client": "^6.24.2",
     "@sanity/vision": "^4.18.0",
     "react": "^19.1",
     "react-dom": "^19.1",
@@ -23,9 +26,11 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/node": "^22.10.2",
     "@types/react": "^19.1",
     "eslint": "^9.28",
     "prettier": "^3.5",
+    "tsx": "^4.19.2",
     "typescript": "^5.8"
   },
   "prettier": {

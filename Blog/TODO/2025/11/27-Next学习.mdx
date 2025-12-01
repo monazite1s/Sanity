@@ -1,0 +1,439 @@
+# Next.js 全面学习笔记
+
+## 第 1 篇：基础篇——认识 Next.js 与核心架构
+
+### 第 1 章：Next.js 基础与核心理念
+
+- 什么是 Next.js
+
+- 为什么选择 Next.js
+
+- Next.js 的目标与适用场景
+
+- 与传统 React 的差异（SPA vs Full-stack framework）
+
+- 与其他框架对比
+
+- Vite + React
+
+- Nuxt
+
+- SSG/SSR 框架
+
+### 第 2 章：Next.js 的渲染模型（重点）
+
+- CSR（Client Side Rendering）
+
+- SSR（Server Side Rendering）
+
+- SSG（Static Site Generation）
+
+- ISR（Incremental Static Regeneration）
+
+- Streaming SSR（流式渲染）
+
+- RSC（React Server Components）
+
+- 混合渲染（页面级 / 组件级混合）
+
+- 各渲染模式的对比与使用场景
+
+- 渲染模式选择策略（最佳实践）
+
+### 第 3 章：Next 项目结构与运行时环境
+
+- App Router 文件结构详解
+
+- Node.js Runtime vs Edge Runtime
+
+- public/、next.config.js、middleware.ts
+
+- 构建产物与运行时
+
+## 第 2 篇：核心篇——Server / Client Components 深入理解
+
+### 第 4 章：React Server Components（RSC）全解析
+
+- RSC 的出现背景
+
+- 性能优势与设计理念
+
+- 零 JS 发送
+
+- 安全的数据获取
+
+- Flight Protocol
+
+- RSC 与 HTML Streaming
+
+- RSC 中不允许做的事、常见错误
+
+### 第 5 章：Client Components
+
+- “use client” 的意义
+
+- 只能在客户端使用的 API
+
+- 水合机制（Hydration）
+
+- 何时必须使用 Client Component？
+
+- RSC + Client 的组合模式
+
+### 第 6 章：RSC 的数据流与缓存机制
+
+- Server Component 的数据流
+
+- Flight 数据包构造解析
+
+- Server → Client 的边界设计
+
+- RSC Cache
+
+- Route Cache
+
+- 全局缓存与局部缓存
+
+- 调试 RSC（常见陷阱）
+
+## 第 3 篇：路由篇——App Router 完整指南
+
+### 第 7 章：App Router 基础
+
+- layout.tsx
+
+- page.tsx
+
+- template.tsx
+
+- loading.tsx
+
+- error.tsx、not-found.tsx
+
+- route.ts / Route Handlers
+
+### 第 8 章：路由结构与行为
+
+- 路由 Segment
+
+- Layout 嵌套与生命周期
+
+- Template vs Layout（关键区别）
+
+- 动态路由
+
+- 嵌套路由
+
+- 捕获路由（Catch-all）
+
+### 第 9 章：高级路由能力
+
+- 平行路由（@folder）
+
+- 拦截路由（(..) / (...)）
+
+- 模态框路由（Intercepting routes 实战）
+
+- Segment Config（如 dynamic = "force-static"）
+
+## 第 4 篇：导航篇——链接、跳转、预取、刷新
+
+### 第 10 章：导航系统
+
+- \<Link\> 组件
+
+- useRouter（客户端导航）
+
+- redirect()（服务端导航）
+
+- notFound()
+
+- refresh()
+
+### 第 11 章：预加载与优化
+
+- Prefetch（自动/禁用）
+
+- on viewport / on hover
+
+- 缓存协同导航
+
+- router cache 与 prefetch 的关系
+
+## 第 5 篇：数据篇——数据获取、预取、缓存、更新
+
+### 第 12 章：数据获取（Fetching）
+
+- 改造过的 fetch
+
+- 自动请求去重
+
+- cache / no-store
+
+- revalidate
+
+- force-cache
+
+- 动态渲染 vs 静态渲染
+
+- 数据获取策略（关键）
+
+### 第 13 章：数据预取（Prefetching）
+
+- 页面级数据的预构建
+
+- generateStaticParams
+
+- 路由预取与 RSC 协作
+
+### 第 14 章：数据更新（Mutation）
+
+- Server Actions（最推荐）
+
+- route.ts API 调用
+
+- 客户端组件更新数据 (SWR / React Query)
+
+- revalidatePath / revalidateTag
+
+- “数据过期”模型
+
+### 第 15 章：Next.js 的缓存体系（易被忽视，但极其重要）
+
+- 多级缓存架构
+
+- fetch cache
+
+- RSC cache
+
+- router cache
+
+- full-page cache
+
+- 缓存失效策略
+
+- 如何强制重建页面
+
+- 如何避开缓存陷阱
+
+- 缓存调试
+
+## 第 6 篇：渲染篇——水合、Suspense、Streaming、懒加载
+
+### 第 16 章：Hydration（水合）
+
+- 什么是水合
+
+- 为什么只对 Client Component 水合
+
+- 部分水合（Partial Hydration）
+
+- Hydration Mistmatch 调试
+
+### 第 17 章：Suspense / Streaming SSR
+
+- React Suspense 原理
+
+- Loading UI
+
+- 流式 HTML Rendering
+
+- 在慢请求上的优势
+
+### 第 18 章：懒加载与性能优化
+
+- 动态 import()
+
+- 组件拆分策略
+
+- 图片优化（next/image）
+
+- 字体优化（next/font）
+
+## 第 7 篇：全栈篇——API、Server Actions、Middleware
+
+### 第 19 章：Route Handlers（server routes）
+
+- GET/POST/PUT/DELETE
+
+- Request / Response
+
+- Edge vs Node handler
+
+- 文件上传
+
+- 处理 cookies、headers
+
+### 第 20 章：Server Actions 深入
+
+- Action 的定义方式
+
+- 安全机制（CSRF 内置防御）
+
+- 数据库写入
+
+- 表单提交最佳实践
+
+- 与 revalidateTag() 协作
+
+### 第 21 章：Middleware
+
+- 中间件生命周期
+
+- Edge runtime
+
+- 用户权限、路由保护
+
+- A/B 测试
+
+- 重写、重定向
+
+## 第 8 篇：SEO、元数据、国际化
+
+### 第 22 章：Metadata API
+
+- metadata
+
+- 动态 metadata
+
+- OpenGraph
+
+- SEO 最佳实践
+
+### 第 23 章：国际化（i18n）
+
+- next-intl
+
+- Next 原生 i18n
+
+- RSC 中的国际化策略
+
+- 动态路由 + i18n
+
+## 第 9 篇：安全、身份验证
+
+### 第 24 章：身份验证
+
+- NextAuth.js（Auth.js）
+
+- JWT / Session / OAuth
+
+- Middleware 中的权限控制
+
+- Server Action + Auth
+
+### 第 25 章：安全性
+
+- CSRF
+
+- SSRF
+
+- XSS
+
+- Server Actions 的安全模型
+
+- 环境变量注入安全
+
+## 第 10 篇：生产篇——优化、部署、调试、监控
+
+### 第 26 章：性能优化
+
+- Bundle 分析
+
+- RSC 优化策略
+
+- 渲染模式选择
+
+- 全渲染路径优化（TTFB, FCP, LCP）
+
+### 第 27 章：监控与指标
+
+- Vercel Speed Insights
+
+- 日志监控
+
+- Edge/Server 性能指标
+
+### 第 28 章：环境变量管理
+
+- .env
+
+- Edge vs Server 的环境变量差异
+
+- Public vs Private env
+
+- 环境变量注入错误排查
+
+### 第 29 章：部署与构建
+
+- Vercel 一键部署
+
+- Docker 部署
+
+- Nginx + Node 部署
+
+- Bun/Node 运行时差异
+
+### 第 30 章：CI/CD
+
+- GitHub Actions 构建流程
+
+- 自动化测试
+
+- 自动 Revalidate
+
+- 产物缓存
+
+## 第 11 篇：生态篇——Headless CMS、数据库、工具链
+
+### 第 31 章：Next.js + 数据库
+
+- Prisma
+
+- Drizzle
+
+- PlanetScale / Neon
+
+- RSC 中使用数据库
+
+### 第 32 章：Headless CMS 集成
+
+- Strapi
+
+- Sanity
+
+- Contentful
+
+### 第 33 章：前端工具链
+
+- ESLint
+
+- Prettier
+
+- TypeScript 最佳配置
+
+- 目录结构组织（最优实践）
+
+## 第 12 篇：附录——常见问题、调试手册、最佳实践
+
+### 第 34 章：常见错误与陷阱
+
+- RSC 错误
+
+- Hydration mismatch
+
+- cache/no-store 混用问题
+
+- next.config.js 配错导致构建失败
+
+### 第 35 章：项目最佳实践指南
+
+- 文件组织
+
+- 布局模式
+
+- 数据获取策略
+
+- 缓存策略
+
+- 全局状态管理（何时用 Zustand / Redux）
