@@ -1,0 +1,6 @@
+﻿/*
+# ReactServerComponents_RSC
+
+*/
+
+export {};

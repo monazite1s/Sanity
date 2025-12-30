@@ -1,0 +1,6 @@
+﻿/*
+# SRI_SubresourceIntegrity
+
+*/
+
+export {};
