@@ -10,8 +10,10 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "import:generate": "tsx scripts/importDocs.ts",
-    "import:upload": "sanity dataset import docs-import.ndjson production --replace"
+    "import:generate": "tsx --env-file=.env.local scripts/importDocs.ts",
+    "import:upload": "sanity dataset import io/docs-import.ndjson production --replace",
+    "export:all": "sanity dataset export production io/backup.zip",
+    "export:ndjson": "sanity dataset export production io/backup.ndjson"
   },
   "keywords": [
     "sanity"

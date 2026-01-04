@@ -50,7 +50,7 @@ interface DocPage {
 
 // Simple frontmatter parser to avoid dependencies
 function parseFrontmatter(content: string): { data: any; content: string } {
-    const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+    const match = content.match(/^---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n)+([\s\S]*)$/)
     if (!match) return { data: {}, content }
 
     const frontmatterRaw = match[1]
@@ -169,7 +169,11 @@ async function main() {
         ...pages.map(p => JSON.stringify(p))
     ].join('\n')
 
-    const outputPath = path.join(process.cwd(), 'docs-import.ndjson')
+    const ioDir = path.join(process.cwd(), 'io')
+    if (!fs.existsSync(ioDir)) {
+        fs.mkdirSync(ioDir, { recursive: true })
+    }
+    const outputPath = path.join(ioDir, 'docs-import.ndjson')
     fs.writeFileSync(outputPath, output)
 
     console.log(`\n✅ 导入文件已生成: ${outputPath}`)
